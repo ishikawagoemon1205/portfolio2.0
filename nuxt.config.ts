@@ -24,7 +24,7 @@ export default defineNuxtConfig({
         },
         {
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Kosugi&display=swap",
+          href: "https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Kosugi&family=Noto+Sans+JP:wght@100..900&display=swap",
           crossorigin: "",
         },
       ],

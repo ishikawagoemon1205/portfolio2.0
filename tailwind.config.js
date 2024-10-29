@@ -5,8 +5,11 @@ export default {
     extend: {
       colors: {
         _white: "#ffffff",
+        _bgWhite: "#FCFCFC",
+        _lRed: "#FF406E",
         _black: "#000000",
         _gray: "#7B7B7B",
+        _gray_1: "#F2F2F2",
         _lBlue: "#EDF2F8",
         _dBlue: "#0071E3",
       },

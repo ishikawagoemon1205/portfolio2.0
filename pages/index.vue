@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-    middleware: ['go-login']
+    middleware: ['go-home']
 });
 </script>
 
