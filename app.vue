@@ -1,6 +1,6 @@
 <template>
   <!-- スマートフォンで表示しているときに、画面を表示する -->
-  <div class="hidden lg:block font-Kosugi w-screen h-screen bg-_bgWhite">
+  <div class="hidden lg:block font-Kosugi overflow-x-hidden w-screen h-screen bg-_bgWhite">
     <NuxtLayout>
       <NuxtPage></NuxtPage>
     </NuxtLayout>
