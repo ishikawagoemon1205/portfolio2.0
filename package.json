@@ -13,6 +13,7 @@
     "@ant-design/icons-vue": "^7.0.1",
     "@nuxtjs/tailwindcss": "^6.12.2",
     "ant-design-vue": "^3.2.20",
+    "gsap": "^3.12.5",
     "nuxt": "^3.13.2",
     "vue": "latest",
     "vue-router": "latest"

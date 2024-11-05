@@ -1,10 +1,55 @@
 <script setup lang="ts">
 import type { navItems } from '~/interface';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const pagesElement = ref(null);
+
+
 // -----
 // useRouter
 // -----
 
     const router = useRouter();
+
+// -----
+// ライフサイクルフック
+// -----
+
+    const pageContents = ref();
+
+    onMounted(() => {
+        initPosition();
+        window.addEventListener("scroll", () => {
+            console.log("layout")
+        })
+        // gsap.to(".test-box", {
+        //     x: 500, // X軸に500px移動
+        //     duration: 2, // アニメーションの継続時間
+        //     scrollTrigger: {
+        //         trigger: ".test-box", // アニメーションを開始するトリガー要素
+        //         start: "top 80%", // トリガーが画面の80%の位置に来たときに開始
+        //         end: "top 30%", // トリガーが画面の30%の位置に来たときに終了
+        //         scrub: true, // スクロールに応じてアニメーションを進める
+        //         onUpdate: (self) => {
+        //             // 現在のスクロール位置（Y座標）をコンソールに出力
+        //             console.log("現在のY座標:", self.progress * window.innerHeight);
+        //         },
+        //     }
+        // });
+
+        // // ScrollTriggerをリフレッシュして、設定を再確認する
+        // ScrollTrigger.refresh();
+
+        // // スクロールイベントをリスンして現在のスクロール位置を確認
+        // window.addEventListener('scroll', () => {
+        //     console.log("現在のスクロール位置:", window.scrollY);
+        // });
+    });
+
+    
 
 // -----
 // ページが切り替わったときにナビゲーションボタンの表示が切り替わる機能
@@ -57,6 +102,15 @@ import type { navItems } from '~/interface';
     };
 
 // -----
+// 画面読込時に、ブログ検索要素を画面の外側に配置する
+// -----
+
+    const initPosition = (): void => {
+        gsap.set('.searchItems', { x: window.innerWidth });
+    }
+
+
+// -----
 // 虫眼鏡ボタンを押すとブログが検索機能が表示される機能
 // -----
 
@@ -64,8 +118,31 @@ import type { navItems } from '~/interface';
 
     const enableSearch = ():void => {
         showSearch.value = !showSearch.value;
+        // gsap.to('.navbars',{
+        //     x: window.innerWidth * 3,
+        //     duration: 0,
+        //     onComplete: () => {
+        //         gsap.to('.searchItems', {
+        //             x:0,
+        //             duration: 0.1,
+        //                 onComplete: () => {
+        //                     nextTick(() => {
+        //                     document.getElementById('focusSearch')?.focus();
+        //                 });
+        //             }
+        //         })
+        //     }
+        // });
+        gsap.to('.searchItems' , {
+            x: 0,
+            duration: 0.5,
+            ease: "power2.out"
+        });
+        gsap.to('.navbarItems' , {
+            x: window.innerWidth
+        });
         nextTick(() => {
-            document.getElementById('focusSearch')?.focus()
+            document.getElementById('focusSearch')?.focus();
         });
     };
 
@@ -77,6 +154,14 @@ import type { navItems } from '~/interface';
     const disabledSearch = ():void => {
         showSearch.value = !showSearch.value;
         searchInput.value = '';
+        gsap.to('.navbarItems',{
+            x:0,
+            duration: 0.1,
+        });
+        gsap.to('.searchItems' , {
+            x: window.innerWidth
+        })
+
     }
 
 // -----
@@ -85,6 +170,16 @@ import type { navItems } from '~/interface';
 
     const searchInput:Ref = ref('')
 
+// -----
+// ページがスクロールされたときに上部のグラフが変形する機能
+// -----
+
+    const pageScroll = ():void => {
+        console.log("test")
+        const viewportBottomY = window.scrollY + window.innerHeight;
+        const documentBottomY = document.documentElement.scrollHeight;
+        console.log(`${viewportBottomY}と${documentBottomY}`)
+    }
 
 </script>
 
@@ -94,9 +189,9 @@ import type { navItems } from '~/interface';
         >
         <div 
             v-show="!showSearch" 
-            class="w-[1024px] h-[40px] pt-[5px] pb-[5px] px-[20px] flex items-end space-x-[20px] bg-_bgWhite relative transition-all duration-500 ease-in-out">
+            class="navbarItems w-[1024px] h-[40px] pt-[5px] pb-[5px] px-[20px] flex items-end space-x-[20px] bg-_bgWhite relative transition-all duration-500 ease-in-out">
             <SvgIconsIcon class="w-[20px] h-[26px]"></SvgIconsIcon>
-            <div v-for="navItem in navItems" :key="navItem.name">
+            <div v-for="navItem in navItems" :key="navItem.name" class="cursor-pointer">
                 <div class="h-[100%] inline-block px-[10px] relative" style="bottom: -5px;">
                     <div @click="navigateTo(navItem.path)" class="no-pointer">
                         <div v-if="navItem.isEnable" class="group">
@@ -110,7 +205,7 @@ import type { navItems } from '~/interface';
                     </div>
                 </div>
             </div>
-            <div @click="enableSearch()">
+            <div @click="enableSearch()" class="cursor-pointer">
                 <a-tooltip placement="bottom">
                     <template #title>
                         <span>ブログ記事検索</span>
@@ -119,7 +214,7 @@ import type { navItems } from '~/interface';
                 </a-tooltip>
             </div>
         </div>
-        <div v-show="showSearch" class="w-[100%] h-[40px] space-x-[8px] pr-[40px] flex justify-center items-center">
+        <div v-show="showSearch" class="searchItems w-[100%] h-[40px] space-x-[8px] pr-[40px] flex justify-center items-center">
             <div @click="disabledSearch()">
                 <a-tooltip a-tooltip placement="bottom">
                     <template #title>
@@ -145,8 +240,9 @@ import type { navItems } from '~/interface';
     <div class="relative">
         <div v-show="showSearch" class="fixed inset-0 z-10 bg-black opacity-50"></div>
         <div class="absolute w-[100%] h-[calc(100vh-41px)] z-1">
-            frefre
-            <slot/>
+            <div class="w-[600px] h-[600px] bg-_lBlue">
+                <slot/>
+            </div>
         </div>
     </div>
 </template>
