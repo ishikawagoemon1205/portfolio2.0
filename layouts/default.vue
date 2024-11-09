@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
-import type {NavItemProperties} from '~/interface';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import type { NavItemProperties } from '~/interface';
 
 // -----
 // gsap
