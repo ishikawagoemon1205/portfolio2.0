@@ -13,6 +13,11 @@ type NavItemProperty = {
 type NavItem = {
     property: NavItemProperty,
     style: NavItemStyle,
+    projects: NavItemStyle,
+    works: NavItemStyle,
+    blog: NavItemStyle,
+    contact: NavItemStyle,
+    resume: NavItemStyle,
 }
 
 export interface NavItemProperties {

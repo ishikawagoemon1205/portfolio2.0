@@ -22,6 +22,14 @@ const { $gsap , $ScrollTrigger } = useNuxtApp();
 
     onMounted( () => {
         initPosition();
+        setupScrollTrigger();
+    });
+
+// -----
+// スクロール時にスライドバーの設定を行う処理
+// -----   
+
+    const setupScrollTrigger = () => {
         $gsap.to(pageNavigationWidthRef, {
             value: window.innerWidth,
             scrollTrigger: {
@@ -30,10 +38,33 @@ const { $gsap , $ScrollTrigger } = useNuxtApp();
                 end: "bottom bottom",
                 scrub: true,
                 onUpdate: (self) => {
-                    const newWidth =  (self.progress * (window.innerWidth));
+                    const newWidth = (self.progress * (window.innerWidth));
                     pageNavigationWidthRef.value = newWidth;
                 },
             }
+        });
+    };
+
+// ページ切り替え時に、スライドバーの設定をリセットする処理
+    router.beforeEach((to, from, next) => {
+        $ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        pageNavigationWidthRef.value = 0;
+        nextTick(() => {
+            setupScrollTrigger();
+        });
+        next();
+    });
+
+// ページ遷移後にスクロール位置をリセットする処理
+    router.afterEach(() => {
+        window.scrollTo(0, 0);
+    });
+
+// pagesContentsRefの変更を監視してScrollTriggerを再設定
+    watch(pagesContentsRef, () => {
+        nextTick(() => {
+            $ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+            setupScrollTrigger();
         });
     });
 
@@ -71,14 +102,22 @@ const { $gsap , $ScrollTrigger } = useNuxtApp();
 // -----
 
     const disabledSearch = ():void => {
-        showSearch.value = !showSearch.value;
+        showSearch.value = false;
         searchInput.value = '';
-        $gsap.to('.navbarItems',{
-            x:0,
-            duration: 0.1,
+        // $gsap.to('.navbarItems',{
+        //     x:0,
+        //     duration: 0.1,
+        // });
+        // $gsap.to('.searchItems' , {
+        //     x: window.innerWidth
+        // });
+        $gsap.to('.searchItems', {
+            x: window.innerWidth,
+            duration: 0.5,
+            ease: "power2.out"
         });
-        $gsap.to('.searchItems' , {
-            x: window.innerWidth
+            $gsap.to('.navbarItems', {
+            x: 0
         });
     }
 
@@ -326,7 +365,7 @@ const { $gsap , $ScrollTrigger } = useNuxtApp();
             },
             blog: {
                 property: {
-                    name: "プロフィール",  
+                    name: "ブログ",  
                     path: "/blog",
                     isSelected: computed(() => {
                         return router.currentRoute.value.path === '/blog';
@@ -600,6 +639,7 @@ const { $gsap , $ScrollTrigger } = useNuxtApp();
         <div class="absolute w-[100%] h-[calc(100vh-43px)] z-1">
             <div ref="pagesContentsRef">
                 <slot/>
+                <!-- <div class="w-[100%] h-[3000px]"></div> -->
             </div>
         </div>
     </div>
