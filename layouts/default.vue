@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import gsap from 'gsap/dist/gsap'
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import type { NavItemProperties } from '~/interface';
+
+const { $gsap , $ScrollTrigger } = useNuxtApp();
 
 // -----
 // gsap
 // -----
 
-    gsap.registerPlugin(ScrollTrigger);
+    $gsap.registerPlugin($ScrollTrigger);
 
     const pagesContentsRef = ref();
     const pageNavigationWidthRef = ref(0); 
@@ -24,7 +24,7 @@ import type { NavItemProperties } from '~/interface';
 
     onMounted( () => {
         initPosition();
-        gsap.to(pageNavigationWidthRef, {
+        $gsap.to(pageNavigationWidthRef, {
             value: window.innerWidth,
             scrollTrigger: {
                 trigger: pagesContentsRef.value,
@@ -44,7 +44,7 @@ import type { NavItemProperties } from '~/interface';
 // -----
 
     const initPosition = (): void => {
-        gsap.set('.searchItems', { x: window.innerWidth });
+        $gsap.set('.searchItems', { x: window.innerWidth });
     }
 
 // -----
@@ -55,12 +55,12 @@ import type { NavItemProperties } from '~/interface';
 
     const enableSearch = ():void => {
         showSearch.value = !showSearch.value;
-        gsap.to('.searchItems' , {
+        $gsap.to('.searchItems' , {
             x: 0,
             duration: 0.5,
             ease: "power2.out"
         });
-        gsap.to('.navbarItems' , {
+        $gsap.to('.navbarItems' , {
             x: window.innerWidth
         });
         nextTick(() => {
@@ -75,11 +75,11 @@ import type { NavItemProperties } from '~/interface';
     const disabledSearch = ():void => {
         showSearch.value = !showSearch.value;
         searchInput.value = '';
-        gsap.to('.navbarItems',{
+        $gsap.to('.navbarItems',{
             x:0,
             duration: 0.1,
         });
-        gsap.to('.searchItems' , {
+        $gsap.to('.searchItems' , {
             x: window.innerWidth
         });
     }
