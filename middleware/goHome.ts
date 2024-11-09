@@ -1,5 +1,5 @@
 export default defineNuxtRouteMiddleware(
     (): any => {
-        return navigateTo('/home')
+        return navigateTo('home')
     }
 )

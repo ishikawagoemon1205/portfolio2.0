@@ -1,15 +1,30 @@
-type navItem = {
+type NavItemStyle = {
+    text: ComputedRef<string>,
+    underbar: ComputedRef<string>,
+}
+
+type NavItemProperty = {
     name: string,
     path: string,
-    isEnable: boolean,
-};
+    isSelected: ComputedRef<boolean>,
+    isHovered: boolean,
+}
 
-export interface navItems {
-    home: navItem, // ホームページ
-    profile: navItem, // プロフィール
-    projects: navItem, // プロジェクト
-    works: navItem, // 制作物
-    blog: navItem, // ブログ
-    contact: navItem, // お問い合わせ
-    resume: navItem, // 履歴書
-};
+type NavItem = {
+    property: NavItemProperty,
+    style: NavItemStyle,
+}
+
+export interface NavItemProperties {
+    mode: ComputedRef<"whitemode"|"darkmode">;
+    currentPage: ComputedRef<string>,
+    background: ComputedRef<string>,
+    searchArea: boolean,
+    searchAreaBackground: ComputedRef<string>,
+    navbarAreaUnderbarBackground: ComputedRef<string>,
+    slidebarBackground: ComputedRef<string>,
+    navItems: {
+        home: NavItem,
+        profile: NavItem,
+    }
+}
