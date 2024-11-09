@@ -1,11 +1,11 @@
-// plugins/gsap.js
-import gsap from 'gsap/dist/gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.vueApp.use(gsap);
   nuxtApp.provide('gsap', gsap);
   nuxtApp.provide('ScrollTrigger', ScrollTrigger);
 });

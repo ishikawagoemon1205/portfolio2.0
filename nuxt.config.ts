@@ -8,11 +8,11 @@ export default defineNuxtConfig({
   vite: {
     plugins: [
       Components({
-        resolvers: [AntDesignVueResolver({resolveIcons: true})],
+        resolvers: [AntDesignVueResolver({ resolveIcons: true })],
       }),
     ],
     ssr: {
-      noExternal: ['moment', 'compute-scroll-into-view', 'ant-design-vue','@ant-design/icons-vue'],
+      noExternal: ['moment', 'compute-scroll-into-view', 'ant-design-vue', '@ant-design/icons-vue'],
     },
   },
   app: {
@@ -32,5 +32,5 @@ export default defineNuxtConfig({
   },
   plugins: [
     '~/plugins/gsap.js',
-  ]
-})
+  ],
+});

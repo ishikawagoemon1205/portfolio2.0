@@ -1,13 +1,5 @@
 <script lang="ts">
 
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
-});
-
-const handleScroll = () => {
-  console.log('Scrolling');
-};
-
 </script>
 
 <template>

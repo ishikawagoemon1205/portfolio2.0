@@ -7,8 +7,6 @@ const { $gsap , $ScrollTrigger } = useNuxtApp();
 // gsap
 // -----
 
-    $gsap.registerPlugin($ScrollTrigger);
-
     const pagesContentsRef = ref();
     const pageNavigationWidthRef = ref(0); 
 
