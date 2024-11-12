@@ -39,12 +39,12 @@ const currentImageIndex = ref(0);
 
 const welcommImg1 = ref(false); // 初期状態で表示
 
-const imagePosition = ref({
+const imagePosition1 = ref({
     top: 1000,
     left: 1000,
 });
 
-const imageSize = ref({
+const imageSize1 = ref({
     width: 1000,
     height: 1000
 });
@@ -60,15 +60,15 @@ const welcomeImg1Handler = () => {
             const imgElement = document.querySelector('.welcomImg1');
             if (imgElement) {
                 const rect = imgElement.getBoundingClientRect();
-                imagePosition.value = {
+                imagePosition1.value = {
                     top: rect.top,
                     left: rect.left
                 };
-                imageSize.value = {
+                imageSize1.value = {
                     width: rect.width,
                     height: rect.height
                 };
-                console.log(imageSize.value.height);
+                console.log(imageSize1.value.height);
             };
         },
         onEnterBack: () => {
@@ -168,10 +168,10 @@ const welcomeImg1Handler = () => {
                             class="w-[100%] h-[100%] object-cover"
                             :class="{'fixed': welcommImg1}"
                             :style="{
-                                top: welcommImg1 ? imagePosition.top + 'px' : 'auto',
-                                left: welcommImg1 ? imagePosition.left + 'px' : 'auto',
-                                width: welcommImg1 ? imageSize.width + 'px' : '100%',
-                                height: welcommImg1 ? imageSize.height + 'px' : 'auto'
+                                top: welcommImg1 ? imagePosition1.top + 'px' : 'auto',
+                                left: welcommImg1 ? imagePosition1.left + 'px' : 'auto',
+                                width: welcommImg1 ? imageSize1.width + 'px' : '100%',
+                                height: welcommImg1 ? imageSize1.height + 'px' : 'auto'
                             }"
                         >
                     </div>
