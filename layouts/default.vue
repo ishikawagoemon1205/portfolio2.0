@@ -518,7 +518,7 @@ const { $gsap , $ScrollTrigger } = useNuxtApp();
         :style="{backgroundColor: navItemProperties.background}">
         <div 
             v-show="!showSearch"
-            class="navbarItems w-[1024px] h-[40px] pt-[5px] pb-[5px] px-[20px] flex items-end space-x-[50px] relative transition-all duration-500 ease-in-out"
+            class="navbarItems w-[1024px] h-[40px] pt-[5px] pb-[5px] px-[20px] flex items-end space-x-[40px] relative transition-all duration-500 ease-in-out"
             >
             <SvgIconsIcon class="w-[20px] h-[26px]"></SvgIconsIcon>
             <div>
@@ -636,7 +636,7 @@ const { $gsap , $ScrollTrigger } = useNuxtApp();
     <div class="w-[100%] h-[43px]"></div>
     <div class="relative">
         <div v-show="showSearch" class="fixed inset-0 z-10 bg-black opacity-50"></div>
-        <div class="absolute w-[100%] h-[calc(100vh-43px)] z-1">
+        <div class="absolute w-[100%] h-[calc(100vh-43px)] z-[1]">
             <div ref="pagesContentsRef">
                 <slot/>
                 <!-- <div class="w-[100%] h-[3000px]"></div> -->
