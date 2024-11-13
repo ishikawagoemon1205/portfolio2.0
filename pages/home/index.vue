@@ -7,13 +7,14 @@ const { $gsap , $ScrollTrigger } = useNuxtApp();
 // ライフサイクルフック
 // -----
 
-    onMounted(() => {
-        nextTick(() => {
-            welcomeMessage1Handler();
-            welcomeMessage2Handler();
-            welcomeMessage3Handler();
-        });
-    });
+onMounted(() => {
+    nextTick(() => {
+        welcomeMessage1Handler();
+        welcomeMessage2Handler();
+        welcomeMessage3Handler();
+    })
+    $ScrollTrigger.refresh();
+});
 
 // -----
 // Topでのアニメーション
