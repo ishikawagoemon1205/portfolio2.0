@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { message } from 'ant-design-vue';
 
 const { $gsap , $ScrollTrigger } = useNuxtApp();
 
@@ -8,7 +9,9 @@ const { $gsap , $ScrollTrigger } = useNuxtApp();
 
     onMounted(() => {
         nextTick(() => {
-            welcomeImg1Handler();
+            welcomeMessage1Handler();
+            welcomeMessage2Handler();
+            welcomeMessage3Handler();
         });
     });
 
@@ -26,58 +29,72 @@ const { $gsap , $ScrollTrigger } = useNuxtApp();
         });
     };
 
-// -----
-// 簡単自己紹介での画像のアニメーション
-// -----
-const images = ref([
-    '/benjamin-chambon-F-haNd2Y500-unsplash.jpg',
-    '/jason-leung-7utzACgbCdE-unsplash.jpg',
-    '/tom-def-wZ4vdWc0Aug-unsplash.jpg',
-]);
+    const welcomeMessage1 = ref(null);
+    const welcomeMessage2 = ref(null);
+    const welcomeMessage3 = ref(null);
 
-const currentImageIndex = ref(0);
+    const welcomeMessage1Handler = () => {
+        $gsap.fromTo('.welcomeMessage1', 
+            {
+                opacity: 0,  // 初期状態は透明
+                y: 50,       // 初期位置を下に設定
+            },
+            {
+                opacity: 1,  // 表示アニメーション（不透明）
+                y: 0,        // 元の位置に戻す
+                duration: 2,
+                scrollTrigger: {
+                    trigger: '.welcomeMessage1',
+                    start: "top center",  // 画面中央に要素の上端が来たときに表示アニメーション開始
+                    end: "top 30%",       // 要素の上端が画面の30%に来た時にアニメーション終了
+                    toggleActions: "play none none reverse",  // スクロールアップ時に逆再生（非表示）
+                    markers: false,
+                },
+            }
+        );
+    };
 
-const welcommImg1 = ref(false); // 初期状態で表示
+    const welcomeMessage2Handler = () => {
+        $gsap.fromTo('.welcomeMessage2', 
+            {
+                opacity: 0,  // 初期状態は透明
+                y: 50,       // 初期位置を下に設定
+            },
+            {
+                opacity: 1,  // 表示アニメーション（不透明）
+                y: 0,        // 元の位置に戻す
+                duration: 2,
+                scrollTrigger: {
+                    trigger: '.welcomeMessage2',
+                    start: "top center",  // 画面中央に要素の上端が来たときに表示アニメーション開始
+                    end: "top 30%",       // 要素の上端が画面の30%に来た時にアニメーション終了
+                    toggleActions: "play none none reverse",  // スクロールアップ時に逆再生（非表示）
+                },
+            }
+        );
+    };
 
-const imagePosition1 = ref({
-    top: 1000,
-    left: 1000,
-});
+    const welcomeMessage3Handler = () => {
+        $gsap.fromTo('.welcomeMessage3', 
+            {
+                opacity: 0,  // 初期状態は透明
+                y: 50,       // 初期位置を下に設定
+            },
+            {
+                opacity: 1,  // 表示アニメーション（不透明）
+                y: 0,        // 元の位置に戻す
+                duration: 2,
+                scrollTrigger: {
+                    trigger: '.welcomeMessage3',
+                    start: "top center",  // 画面中央に要素の上端が来たときに表示アニメーション開始
+                    end: "top 30%",       // 要素の上端が画面の30%に来た時にアニメーション終了
+                    toggleActions: "play none none reverse",  // スクロールアップ時に逆再生（非表示）
+                },
+            }
+        );
+    };
+ 
 
-const imageSize1 = ref({
-    width: 1000,
-    height: 1000
-});
-
-const welcomeImg1Handler = () => {
-    $ScrollTrigger.create({
-        trigger: '.welcomImg1',
-        start: 'bottom bottom',
-        end: 'bottom bottom',
-        onEnter: () => {
-            console.log("start開始");
-            welcommImg1.value = true; // スクロールで画像を表示
-            const imgElement = document.querySelector('.welcomImg1');
-            if (imgElement) {
-                const rect = imgElement.getBoundingClientRect();
-                imagePosition1.value = {
-                    top: rect.top,
-                    left: rect.left
-                };
-                imageSize1.value = {
-                    width: rect.width,
-                    height: rect.height
-                };
-                console.log(imageSize1.value.height);
-            };
-        },
-        onEnterBack: () => {
-            console.log("start戻る");
-            welcommImg1.value = false;
-        },
-        markers: true, // デバッグ用のマーカーを表示
-    })
-};
 
 </script>
 
@@ -99,85 +116,81 @@ const welcomeImg1Handler = () => {
             </div>
         </div>
     </div>
-    <div class="w-[100%] h-[calc((100vh-43px)*3)] flex items-center justify-center">
-        <div class="w-[1024px] h-[100%] flex">
-            <!-- 左側 -->
+    <div class="w-[100%] h-[calc((100vh-43px)*3+200px)] flex flex-col items-center space-y-[100px]">
+        <!-- コンテンツ1⃣ -->
+        <div ref="welcomeMessage1" class="welcomeMessage1 w-[1024px] h-[calc(100vh-43px)] flex opacity-0 translate-y-[100px]">
             <div class="w-[50%] h-[100%]">
-                <!-- こんにちは -->
-                <div class="w-[100%] h-[calc(100vh-43px)] flex items-center">
-                    <div class="w-[500px] space-y-[20px]">
-                        <div>
-                            <p class="text-[48px] font-bold">こんにちは！</p>
-                        </div>
-                        <div>
-                            <p class="text-[20px] font-bold text-gray-500">
-                                こんにちは！石川敦大と申します。<br>
-                                現在、フロントエンドエンジニアとして活躍しています。コードを書くことが大好きで、常に新しい技術を学びながら、<span class="text-black">クリイティブで使いやすいウェブアプリケーションを開発</span>しています。
-                            </p>
-                        </div>
-                        <div>
-                            <p @click="navigateTo('profile')" class="text-[14px] font-bold text-_lRed cursor-pointer hover:underline">
-                                プロフィールについてさらに詳しく
-                            </p>
-                        </div>
+                <div class="w-[500px] h-[100%] p-[30px] flex flex-col justify-center space-y-[20px]">
+                    <div>
+                        <p class="text-[48px] font-bold">こんにちは！</p>
                     </div>
-                </div>
-                <!-- これまで -->
-                <div class="w-[100%] h-[calc(100vh-43px)] flex items-center">
-                    <div class="w-[500px] space-y-[20px]">
-                        <div>
-                            <p class="text-[48px] font-bold">これまで</p>
-                        </div>
-                        <div>
-                            <p class="text-[20px] font-bold text-gray-500">
-                                これまでにSES企業や個人開発で、複数のウェブアプリケーション開発プロジェクトに携わりました。<span class="text-black">UI/UXデザインに重点を置き、</span>パフォーマンスの最適化やレスポンシブデザインの導入に成功。<span class="text-black">Vue.jsやTypeScriptを使った開発がWebアプリケーションの得意</span>です。
-                            </p>
-                        </div>
-                        <div>
-                            <p @click="navigateTo('profile')" class="text-[14px] font-bold text-_lRed cursor-pointer hover:underline">
-                                プロジェクトについてさらに詳しく
-                            </p>
-                        </div>
+                    <div>
+                        <p class="text-[20px] font-bold text-gray-500">
+                            こんにちは！石川敦大と申します。<br>
+                            現在、フロントエンドエンジニアとして活躍しています。コードを書くことが大好きで、常に新しい技術を学びながら、<span class="text-black">クリイティブで使いやすいウェブアプリケーションを開発</span>しています。
+                        </p>
                     </div>
-                </div>
-                <!-- これまで -->
-                <div class="w-[100%] h-[calc(100vh-43px)] flex items-center">
-                    <div class="w-[500px] space-y-[20px]">
-                        <div>
-                            <p class="text-[48px] font-bold">これまで</p>
-                        </div>
-                        <div>
-                            <p class="text-[20px] font-bold text-gray-500">
-                                これまでにSES企業や個人開発で、複数のウェブアプリケーション開発プロジェクトに携わりました。<span class="text-black">UI/UXデザインに重点を置き、</span>パフォーマンスの最適化やレスポンシブデザインの導入に成功。<span class="text-black">Vue.jsやTypeScriptを使った開発がWebアプリケーションの得意</span>です。
-                            </p>
-                        </div>
-                        <div>
-                            <p @click="navigateTo('profile')" class="text-[14px] font-bold text-_lRed cursor-pointer hover:underline">
-                                プロジェクトについてさらに詳しく
-                            </p>
-                        </div>
+                    <div>
+                        <p @click="navigateTo('profile')" class="text-[14px] font-bold text-_lRed cursor-pointer hover:underline">
+                            プロフィールについてさらに詳しく
+                        </p>
                     </div>
                 </div>
             </div>
-            <!-- 右側 -->
+            <div class="w-[50%] h-[100%] p-[50px]">
+                <img class="w-[100%] h-[100%]" src="/welcome1.jpeg">
+            </div>
+        </div>
+        <!-- コンテンツ2⃣ -->
+        <div ref="welcomeMessage2" class="welcomeMessage2 w-[1024px] h-[calc(100vh-43px)] flex opacity-0 translate-y-[100px]">
             <div class="w-[50%] h-[100%]">
-                <!-- 画像1⃣-->
-                <div class="w-[100%] h-[calc(100vh-43px)] overflow-hidden flex items-center justify-center">
-                    <div class="welcomImg1 w-[90%] h-[90%] mb-[150px]">
-                        <img :src="images[currentImageIndex]"
-                            class="w-[100%] h-[100%] object-cover"
-                            :class="{'fixed': welcommImg1}"
-                            :style="{
-                                top: welcommImg1 ? imagePosition1.top + 'px' : 'auto',
-                                left: welcommImg1 ? imagePosition1.left + 'px' : 'auto',
-                                width: welcommImg1 ? imageSize1.width + 'px' : '100%',
-                                height: welcommImg1 ? imageSize1.height + 'px' : 'auto'
-                            }"
-                        >
+                <div class="w-[500px] h-[100%] p-[30px] flex flex-col justify-center space-y-[20px]">
+                    <div>
+                        <p class="text-[48px] font-bold">これまで</p>
+                    </div>
+                    <div>
+                        <p class="text-[20px] font-bold text-gray-500">
+                                これまでにSES企業や個人開発で、複数のウェブアプリケーション開発プロジェクトに携わりました。<span class="text-black">UI/UXデザインに重点を置き、</span>パフォーマンスの最適化やレスポンシブデザインの導入に成功。<span class="text-black">Vue.jsやTypeScriptを使った開発がWebアプリケーションの得意</span>です。
+                        </p>
+                    </div>
+                    <div>
+                        <p @click="navigateTo('projects')" class="text-[14px] font-bold text-_lRed cursor-pointer hover:underline">
+                                プロジェクトについてさらに詳しく
+                        </p>
                     </div>
                 </div>
-                <!-- 画像2⃣-->
-
+            </div>
+            <div class="w-[50%] h-[100%] p-[50px]">
+                <img class="w-[100%] h-[100%]" src="/welcome1.jpeg">
+            </div>
+        </div>
+        <!-- コンテンツ3⃣ -->
+        <div ref="welcomeMessage3" class="welcomeMessage3 w-[1024px] h-[calc(100vh-43px)] flex opacity-0 translate-y-[100px]">
+            <div class="w-[50%] h-[100%]">
+                <div class="w-[500px] h-[100%] p-[30px] flex flex-col justify-center space-y-[20px]">
+                    <div>
+                        <p class="text-[48px] font-bold">スキル</p>
+                    </div>
+                    <div>
+                        <p class="text-[20px] font-bold text-gray-500">
+                            以下言語の開発が可能です。<br>
+                            - フロントエンド:<br>
+                            HTML、CSS、JavaScript、TypeScript、<br>
+                            Vue.js、Nuxt.js、TailwindCSS、Flutter<br>
+                            - バックエンド:<br>
+                            Node.js、Firebase、AWS<br>
+                            - ツール: Git、Figma
+                        </p>
+                    </div>
+                    <div>
+                        <p @click="navigateTo('projects')" class="text-[14px] font-bold text-_lRed cursor-pointer hover:underline">
+                                プロジェクトについてさらに詳しく
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-[50%] h-[100%] p-[50px]">
+                <img class="w-[100%] h-[100%]" src="/welcome1.jpeg">
             </div>
         </div>
     </div>

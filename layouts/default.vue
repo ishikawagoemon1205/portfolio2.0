@@ -31,7 +31,7 @@ const { $gsap , $ScrollTrigger } = useNuxtApp();
 
     const setupScrollTrigger = () => {
         $gsap.to(pageNavigationWidthRef, {
-            value: window.innerWidth,
+            // value: window.innerWidth,
             scrollTrigger: {
                 trigger: pagesContentsRef.value,
                 start: "top top",
