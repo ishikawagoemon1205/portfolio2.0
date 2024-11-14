@@ -637,7 +637,7 @@ const { $gsap , $ScrollTrigger } = useNuxtApp();
     <div class="relative">
         <div v-show="showSearch" class="fixed inset-0 z-10 bg-black opacity-50"></div>
         <div class="absolute w-[100%] h-[calc(100vh-43px)] z-[1]">
-            <div ref="pagesContentsRef">
+            <div ref="pagesContentsRef" class="transition-all duration-500 ease-in-out">
                 <slot/>
                 <!-- <div class="w-[100%] h-[3000px]"></div> -->
             </div>

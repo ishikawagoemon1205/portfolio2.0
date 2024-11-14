@@ -100,11 +100,11 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="relative w-[100%] h-[calc(100vh-43px)] bg-_blue_1 z-[2] overflow-hidden">
+    <div class="relative w-[100%] h-[calc(100vh-43px)] bg-_blue_1 z-[2] overflow-hidden transition-all duration-500 ease-in-out">
         <div class="absolute circle w-[1600px] h-[1600px] mt-[-315px] ml-[-315px] rounded-[50%] bg-[#5CD8FF] z-[3]"></div>
         <div class="absolute circle w-[1200px] h-[1200px] mt-[-220px] ml-[-220px] rounded-[50%] bg-[#A990BA] z-[4]"></div>
         <div class="absolute circle w-[800px] h-[800px] mt-[-100px] ml-[-100px] rounded-[50%] bg-[#FF406E] z-[5]"></div>
-        <div @mousemove="handleMouseMove" class="absolute w-[100%] h-[100%] bg-white flex flex-col items-center justify-center space-y-[30px] mix-blend-screen z-[6]">
+        <div @mousemove="handleMouseMove" class="absolute w-[100%] h-[100%] bg-white flex flex-col items-center justify-center space-y-[30px] mix-blend-screen z-[6] transition-all duration-500 ease-in-out">
             <SvgIconsIcon class="w-[80px] h-[104px]"></SvgIconsIcon>
             <p class="text-[50px] font-bold">挑戦し続け、限界を押し広げる</p>
         </div>
