@@ -153,7 +153,7 @@ onMounted(() => {
         <div ref="panel2" class="w-full h-[calc(100vh-43px)] bg-_black z-[11] absolute top-[calc(100vh-43px)]">
             <div class="relative w-[100%] h-[100%]">
                 <div class="absolute w-[100%] h-[100%]">
-                    <img src="/profile001.png">
+                    <img src="/profile/profile001.png">
                 </div>
                 <div class="absolute w-[100%] h-[100%] bg-black opacity-80"></div>
                 <div class="absolute w-[100%] h-[100%]">
@@ -181,7 +181,7 @@ onMounted(() => {
         <div ref="panel3" class="w-full h-[calc(100vh-43px)] bg-blue-100 z-[12] absolute top-[calc((100vh-43px)*2)]">
             <div class="relative w-[100%] h-[100%]">
                 <div class="absolute w-[100%] h-[100%]">
-                    <img src="/profile002.jpeg" class="w-[100%] h-[100%] object-cover">
+                    <img src="/profile/profile002.jpeg" class="w-[100%] h-[100%] object-cover">
                 </div>
                 <div class="absolute w-[100%] h-[100%] bg-black opacity-80"></div>
                 <div class="absolute w-[100%] h-[100%]">
@@ -209,7 +209,7 @@ onMounted(() => {
         <div ref="panel4" class="w-full h-[calc(100vh-43px)] bg-red-100 z-[13] absolute top-[calc((100vh-43px)*3)]">
             <div class="relative w-[100%] h-[100%]">
                 <div class="absolute w-[100%] h-[100%]">
-                    <img src="/profile003.png" class="w-[100%] h-[100%] object-cover">
+                    <img src="/profile/profile003.png" class="w-[100%] h-[100%] object-cover">
                 </div>
                 <div class="absolute w-[100%] h-[100%] bg-black opacity-80"></div>
                 <div class="absolute w-[100%] h-[100%]">
@@ -237,7 +237,7 @@ onMounted(() => {
         <div ref="panel5" class="w-full h-[calc(100vh-43px)] bg-blue-100 z-[14] absolute top-[calc((100vh-43px)*4)]">
             <div class="relative w-[100%] h-[100%]">
                 <div class="absolute w-[100%] h-[100%]">
-                    <img src="/profile004.jpeg" class="w-[100%] h-[100%] object-cover">
+                    <img src="/profile/profile004.jpeg" class="w-[100%] h-[100%] object-cover">
                 </div>
                 <div class="absolute w-[100%] h-[100%] bg-black opacity-80"></div>
                 <div class="absolute w-[100%] h-[100%]">
@@ -265,7 +265,7 @@ onMounted(() => {
         <div ref="panel6" class="w-full h-[calc(100vh-43px)] bg-red-100 z-[15] absolute top-[calc((100vh-43px)*5)]">
             <div class="relative w-[100%] h-[100%]">
                 <div class="absolute w-[100%] h-[100%]">
-                    <img src="/profile005.jpeg" class="w-[100%] h-[100%] object-cover">
+                    <img src="/profile/profile005.jpeg" class="w-[100%] h-[100%] object-cover">
                 </div>
                 <div class="absolute w-[100%] h-[100%] bg-black opacity-80"></div>
                 <div class="absolute w-[100%] h-[100%]">
@@ -293,7 +293,7 @@ onMounted(() => {
         <div ref="panel7" class="w-full h-[calc(100vh-43px)] bg-blue-100 z-[16] absolute top-[calc((100vh-43px)*6)]">
             <div class="relative w-[100%] h-[100%]">
                 <div class="absolute w-[100%] h-[100%]">
-                    <img src="/profile006.jpeg" class="w-[100%] h-[100%] object-cover">
+                    <img src="/profile/profile006.jpeg" class="w-[100%] h-[100%] object-cover">
                 </div>
                 <div class="absolute w-[100%] h-[100%] bg-black opacity-80"></div>
                 <div class="absolute w-[100%] h-[100%]">
