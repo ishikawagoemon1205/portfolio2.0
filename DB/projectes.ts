@@ -192,7 +192,7 @@ export const DBProjectData: ProjectExample = {
             { type: "text", data: "Stripe APIを利用した決済システムの統合に成功しました。" },
             { type: "link", data: "https://github.com/example" },
         ],
-        images: [{ src: "/project/10004/wcm.jpg", alt: "" }],
+        images: [{ src: "/project/10006/asl.png", alt: "" }],
         links: [{ title: "", url: "" }],
     },
 };
