@@ -301,7 +301,7 @@ onMounted(() => {
                         <div class="space"></div>
                         <div class="w-[1024px] h-[calc(100%-70px)] font-bold">
                             <div class="w-[100%] h-[50px] flex items-center justify-end">
-                                <div class="text-[50px]">2023</div>
+                                <div class="text-[50px]">2024</div>
                             </div>
                             <div class="w-[100%] h-[150px] flex items-center justify-start">
                                 <div class="text-[40px]">技術を磨き、情熱を再確認</div>

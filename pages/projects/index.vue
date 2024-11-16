@@ -100,8 +100,76 @@ const { $gsap, $ScrollTrigger } = useNuxtApp();
                         <!-- カード -->
                         <div v-for="project in projectData" :key="project.id">
                             <NuxtLink :to="{name: 'projects-id' , params: {id: project.id}}">
-                                <div  class="p-4 w-[320px] h-[250px] bg-white text-_black rounded-lg shadow-md transform transition-transform duration-300 ease-in-out hover:scale-110">
-                                    {{project.title }}
+                                <div  class="p-[14px] w-[320px] h-[250px] text-_black rounded-lg shadow-md transform transition-transform duration-300 ease-in-out hover:scale-110">
+                                    <div class="w-[100%] h-[80px]">
+                                        <img class="w-[100%] h-[80px] object-cover" :src="project.images[0].src">
+                                    </div>
+                                    <div class="w-[100%] h-[30px] flex items-center justify-start">
+                                        <div class="text-[14px] font-bold">{{ project.title }}</div>
+                                    </div>
+                                    <div class="w-[100%] h-[20px] flex items-center justify-start">
+                                        <div class="text-[12px] text-_gray_4">企業名：{{ project.companyname }}</div>
+                                    </div>
+                                    <div class="w-[100%] h-[20px] flex items-center justify-start">
+                                        <div class="w-[60%] h-[20px] flex items-center justify-start">
+                                            <div class="text-[12px] text-_gray_4">参画開始日：{{ project.date.start }}</div>
+                                        </div>
+                                        <div class="w-[40%] h-[20px] flex items-center justify-start">
+                                            <div class="text-[12px] text-_gray_4">期間：{{ project.date.duration }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="w-[100%] h-[20px] flex items-center justify-start">
+                                        <div class="w-[60%] h-[20px] flex items-center justify-start">
+                                            <div class="text-[12px] text-_gray_4">社員規模：{{ project.teamSize }}</div>
+                                        </div>
+                                        <div class="w-[40%] h-[20px] flex items-center justify-start">
+                                            <div class="text-[12px] text-_gray_4">技術度：{{ project.impactLevel }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="w-[100%] h-[20px] flex items-center justify-start">
+                                        <div class="w-[65px] h-[20px]">
+                                            <div class="text-[12px] text-_gray_4">フェーズ：</div>
+                                        </div>
+                                        <div v-for="phase in project.phases" class="pr-[10px]">
+                                            <div class="whitespace-nowrap text-[12px] text-_gray_4">{{ phase }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="w-[100%] h-[40px] flex items-center justify-start">
+                                        <div v-for="technology in project.technologies">
+                                            <div class="w-[100%] h-[30px] flex items-center justify-start">
+                                                <div v-if="technology === 'HTML'" class="w-[30px] h-[30px]">
+                                                    <ProgramIconsHtml />
+                                                </div>
+                                                <div v-if="technology === 'CSS'" class="w-[30px] h-[30px]">
+                                                    <ProgramIconsCss />
+                                                </div>
+                                                <div v-if="technology === 'JavaScript'" class="w-[30px] h-[30px]">
+                                                    <ProgramIconsJavascript />
+                                                </div>
+                                                <div v-if="technology === 'TypeScript'" class="w-[30px] h-[30px]">
+                                                    <ProgramIconsTypescript />
+                                                </div>
+                                                <div v-if="technology === 'Nuxt.js'" class="w-[30px] h-[30px]">
+                                                    <ProgramIconsNuxtjs />
+                                                </div>
+                                                <div v-if="technology === 'React'" class="w-[30px] h-[30px]">
+                                                    <ProgramIconsReact />
+                                                </div>
+                                                <div v-if="technology === 'Flutter'" class="w-[30px] h-[30px]">
+                                                    <ProgramIconsFlutter />
+                                                </div>
+                                                <div v-if="technology === 'Python'" class="w-[30px] h-[30px]">
+                                                    <ProgramIconsPython />
+                                                </div>
+                                                <div v-if="technology === 'Firebase'" class="w-[30px] h-[30px]">
+                                                    <ProgramIconsFirebase />
+                                                </div>
+                                                <div v-if="technology === 'AWS'" class="w-[30px] h-[30px]">
+                                                    <ProgramIconsAws />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </NuxtLink>
                         </div>

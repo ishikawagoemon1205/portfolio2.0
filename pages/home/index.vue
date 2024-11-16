@@ -185,7 +185,7 @@ onMounted(() => {
                     </div>
                     <div>
                         <p @click="navigateTo('projects')" class="text-[14px] font-bold text-_lRed cursor-pointer hover:underline">
-                                プロジェクトについてさらに詳しく
+                                制作物についてさらに詳しく
                         </p>
                     </div>
                 </div>
