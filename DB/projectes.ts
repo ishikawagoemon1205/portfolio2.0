@@ -17,8 +17,9 @@ type Project = {
     role: string;
     phases: string[];
     content: {
-        type: "text" | "image" | "link";
+        type: "sectionTitle" | "text" | "image" | "link" ;
         data: string;
+        alt?: string;
     }[];
     images: {
         src: string;
@@ -49,10 +50,11 @@ export const DBProjectData: ProjectExample = {
         role: "フロントエンドエンジニア",
         phases: [ "設計", "実装", "テスト", "リリース"],
         content: [
+            { type: "sectionTitle", data: "はじめに" },
             { type: "text", data: "このプロジェクトでは、ウェブサイトのUI/UX設計とフロントエンド開発を担当しました。" },
-            { type: "image", data: "/images/project1-1.png" },
+            { type: "image", data: "/project/10000/images/001.jpg" },
             { type: "text", data: "ユーザーからのフィードバックを元にデザインを改善しました。" },
-            { type: "link", data: "https://github.com/example" },
+            { type: "link", data: "https://github.com/example" , alt: "GitHub リポジトリ" },
         ],
         images: [{ src: '/project/10000/panasonic_logo.png', alt: "プロジェクト画像" }],
         links: [{ title: "GitHub リポジトリ", url: "https://github.com/example" }],

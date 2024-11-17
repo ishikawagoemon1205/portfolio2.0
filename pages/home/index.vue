@@ -14,7 +14,7 @@ onMounted(() => {
         welcomeMessage3Handler();
     })
     $ScrollTrigger.refresh();
-});
+}); 
 
 // -----
 // Topでのアニメーション
@@ -162,7 +162,7 @@ onMounted(() => {
                 </div>
             </div>
             <div class="w-[50%] h-[100%] p-[50px]">
-                <img class="w-[100%] h-[100%]" src="/welcome1.jpeg">
+                <img class="w-[100%] h-[100%]" src="/welcome2.jpeg">
             </div>
         </div>
         <!-- コンテンツ3⃣ -->
@@ -191,7 +191,7 @@ onMounted(() => {
                 </div>
             </div>
             <div class="w-[50%] h-[100%] p-[50px]">
-                <img class="w-[100%] h-[100%]" src="/welcome1.jpeg">
+                <img class="w-[100%] h-[100%]" src="/welcome3.jpg">
             </div>
         </div>
     </div>
