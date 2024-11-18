@@ -34,6 +34,38 @@ const RefProjectData = computed(() => {
                     <div class="w-[100%] h-[50px] flex items-center">
                         <div class="text-[24px] font-bold">{{ RefProjectData?.title}}</div>
                     </div>
+                    <div class="w-[100%] h-[30px] flex items-center">
+                        <div class="pr-[20px] flex">
+                            <h4 class="text-_gray_4">開始日：</h4>
+                            <h4 class="text-_gray_4">{{ RefProjectData?.date.start }}</h4>   
+                        </div>
+                        <div class="pr-[20px] flex">
+                            <h4 class="text-_gray_4">終了日：</h4>
+                            <h4 class="text-_gray_4">{{ RefProjectData?.date.end }}</h4>   
+                        </div>
+                        <div class="pr-[20px] flex">
+                            <h4 class="text-_gray_4">期間：</h4>
+                            <h4 class="text-_gray_4">{{ RefProjectData?.date.duration }}</h4>   
+                        </div>
+                    </div>
+                    <div class="w-[100%] h-[30px] flex items-center">
+                        <div class="pr-[20px] flex">
+                            <h4 class="text-_gray_4">社員規模：</h4>
+                            <h4 class="text-_gray_4">{{ RefProjectData?.teamSize }}</h4>   
+                        </div>
+                        <div class="pr-[20px] flex">
+                            <h4 class="text-_gray_4">技術度：</h4>
+                            <h4 class="text-_gray_4">{{ RefProjectData?.impactLevel }}</h4>   
+                        </div>
+                    </div>
+                    <div class="w-[100%] h-[30px] flex items-center">
+                        <div class="pr-[20px] flex">
+                            <h4 class="text-_gray_4">フェーズ：</h4>
+                            <div v-for="phase in RefProjectData?.phases">
+                                <h4 class="text-_gray pr-[10px]">{{ phase }}</h4>
+                            </div>
+                        </div>
+                    </div>
                     <div class="w-[100%] h-[40px] py-[6px] flex">
                         <div
                             v-for="technology in RefProjectData?.technologies" :key="technology"
@@ -49,20 +81,6 @@ const RefProjectData = computed(() => {
                             <ProgramIconsPython v-if="technology === 'Python'" />
                             <ProgramIconsFirebase v-if="technology === 'Firebase'" />
                             <ProgramIconsAws v-if="technology === 'AWS'" />
-                        </div>
-                    </div>
-                    <div class="w-[100%] h-[40px] flex items-center">
-                        <div class="pr-[20px] flex">
-                            <h4>開始日：</h4>
-                            <h4>{{ RefProjectData?.date.start }}</h4>   
-                        </div>
-                        <div class="pr-[20px] flex">
-                            <h4>終了日：</h4>
-                            <h4>{{ RefProjectData?.date.end }}</h4>   
-                        </div>
-                        <div class="pr-[20px] flex">
-                            <h4>期間：</h4>
-                            <h4>{{ RefProjectData?.date.duration }}</h4>   
                         </div>
                     </div>
                     <div class="w-[100%] h-[20px]"></div>

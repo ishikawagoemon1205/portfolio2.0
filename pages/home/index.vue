@@ -94,7 +94,14 @@ onMounted(() => {
             }
         );
     };
- 
+
+// -----
+// 最新情報ボタン
+// -----
+
+    const updataConfirm = () => {
+        confirm('本機能をはじめ、他の機能についても現在開発中の箇所がございます。お手数をおかけいたしますが、何卒ご理解いただけますと幸いです。');
+    };
 
 
 </script>
@@ -111,7 +118,7 @@ onMounted(() => {
         <div class="absolute w-[200px] h-[50px] top-[calc(100vh-180px)] left-[calc(100vw-300px)] z-[7]">
             <div class="relative w-[100%] h-[100%] rounded-[5px] bg-_lBlue z-[8] hover:bg-_lRed transition-all duration-500 ease-in-out">
                 <div class="absolute w-[10px] h-[10px] top-[-4px] left-[-4px] bg-_lRed rounded-[10px]"></div>
-                <div class="absolute w-[100%] h-[100%] flex items-center justify-center">
+                <div @click="updataConfirm()" class="absolute w-[100%] h-[100%] flex items-center justify-center">
                     <p class="text-[20px] font-bold mt-[16px]">最新情報</p>
                 </div>
             </div>
