@@ -13,6 +13,7 @@ export default {
         _gray_2: "#D0D0D0",
         _gray_3: "#D0D0D0",
         _gray_4: "#86868B",
+        _gray_5: "#212121",
         _textGray_1: "6D6D6D",
         _lBlue: "#EDF2F8",
         _blue_1: "#F7F9FF", 
