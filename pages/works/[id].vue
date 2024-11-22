@@ -78,6 +78,13 @@ const RefWorkData = computed(() => {
                         <div v-if="work.type === 'link'"class="py-[6px]">
                             <a :href="work.data.url" target="_blank" class="text-[16px] text-_lRed cursor-pointer hover:underline">{{ work.data.text }}</a>
                         </div>
+                        <div v-if="work.type === 'codes'" class="py-[6px]">
+                            <div class="p-[10px] text-[14px] bg-_gray_1 rounded-[4px]">
+                                <div v-for="code in work.data">
+                                    <p class="font-bold">{{ code }}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

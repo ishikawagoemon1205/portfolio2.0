@@ -1,3 +1,10 @@
+type PortfolioContent =
+  | { type: "text"; data: string }
+  | { type: "image"; data: string }
+  | { type: "link"; data: { text: string; url: string } }
+  | { type: "codes"; data: string[] }
+  | { type: "sectionTitle"; data: string };
+
 type BlogPost = {
     id: number;
     title: string;
@@ -7,12 +14,7 @@ type BlogPost = {
         published: string;
         updated?: string;
     };
-    content: {
-        type: "sectionTitle" | "text" | "image" | "code" | "link" | "pageLink";
-        data: string;
-        alt?: string;
-        language?: string; // for code type
-    }[];
+    content: PortfolioContent[];
     tags: string[];
     categories: string[];
     technologies: string[];
@@ -31,15 +33,17 @@ type BlogPost = {
     }[];
 };
 
-type BlogExample = Record<string, BlogPost>;
+type BlogExample = {
+    [key: string]: BlogPost;
+}
 
 
 export const DBBlogData: BlogExample = {
-    "post-1": {
+    post1: {
       id: 1,
       title: "Sample Blog Post",
       subtitle: "This is the first blog post.",
-      date: { published: "2024-11-19" },
+      date: { published: "2023-12-01" },
       content: [
         { type: "sectionTitle", data: "Introduction" },
         { type: "text", data: "This is the first blog post." },
@@ -49,11 +53,11 @@ export const DBBlogData: BlogExample = {
       technologies: ["HTML", "CSS", "JavaScript"],
       links: [],
     },
-    "post-2": {
-      id: 1,
+    post2: {
+      id: 2,
       title: "Sample Blog Post",
       subtitle: "This is the first blog post.",
-      date: { published: "2024-11-19" },
+      date: { published: "2023-12-10" },
       content: [
         { type: "sectionTitle", data: "Introduction" },
         { type: "text", data: "This is the first blog post." },
@@ -63,11 +67,11 @@ export const DBBlogData: BlogExample = {
       technologies: ["HTML", "CSS", "JavaScript"],
       links: [],
     },
-    "post-3": {
-      id: 1,
+    post3: {
+      id: 3,
       title: "Sample Blog Post",
       subtitle: "This is the first blog post.",
-      date: { published: "2024-11-19" },
+      date: { published: "2023-12-03" },
       content: [
         { type: "sectionTitle", data: "Introduction" },
         { type: "text", data: "This is the first blog post." },
@@ -77,11 +81,11 @@ export const DBBlogData: BlogExample = {
       technologies: ["HTML", "CSS", "JavaScript"],
       links: [],
     },
-    "post-4": {
-      id: 1,
+    post4: {
+      id: 4,
       title: "Sample Blog Post",
       subtitle: "This is the first blog post.",
-      date: { published: "2024-11-19" },
+      date: { published: "2023-12-04" },
       content: [
         { type: "sectionTitle", data: "Introduction" },
         { type: "text", data: "This is the first blog post." },
@@ -91,11 +95,11 @@ export const DBBlogData: BlogExample = {
       technologies: ["HTML", "CSS", "JavaScript"],
       links: [],
     },
-    "post-5": {
-      id: 1,
+    post5: {
+      id: 5,
       title: "Sample Blog Post",
       subtitle: "This is the first blog post.",
-      date: { published: "2024-11-19" },
+      date: { published: "2023-12-05" },
       content: [
         { type: "sectionTitle", data: "Introduction" },
         { type: "text", data: "This is the first blog post." },
@@ -105,11 +109,39 @@ export const DBBlogData: BlogExample = {
       technologies: ["HTML", "CSS", "JavaScript"],
       links: [],
     },
-    "post-6": {
-      id: 1,
+    post6: {
+      id: 6,
       title: "Sample Blog Post",
       subtitle: "This is the first blog post.",
-      date: { published: "2024-11-19" },
+      date: { published: "2023-12-06" },
+      content: [
+        { type: "sectionTitle", data: "Introduction" },
+        { type: "text", data: "This is the first blog post." },
+      ],
+      tags: ["intro", "personal"],
+      categories: ["Lifestyle"],
+      technologies: ["HTML", "CSS", "JavaScript"],
+      links: [],
+    },
+    post7: {
+      id: 7,
+      title: "Sample Blog Post",
+      subtitle: "This is the first blog post.",
+      date: { published: "2023-12-06" },
+      content: [
+        { type: "sectionTitle", data: "Introduction" },
+        { type: "text", data: "This is the first blog post." },
+      ],
+      tags: ["intro", "personal"],
+      categories: ["Lifestyle"],
+      technologies: ["HTML", "CSS", "JavaScript"],
+      links: [],
+    },
+    post8: {
+      id: 8,
+      title: "",
+      subtitle: "This is the first blog post.",
+      date: { published: "2024-11-21" },
       content: [
         { type: "sectionTitle", data: "Introduction" },
         { type: "text", data: "This is the first blog post." },

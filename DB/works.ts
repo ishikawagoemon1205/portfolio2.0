@@ -3,7 +3,7 @@ type PortfolioContent =
   | { type: "text"; data: string }
   | { type: "image"; data: string }
   | { type: "link"; data: { text: string; url: string } }
-  | { type: "code"; data: string }
+  | { type: "codes"; data: string[] }
   | { type: "sectionTitle"; data: string };
 
 // リンクの型定義
@@ -68,14 +68,51 @@ export const DBWorkesDate: PortfolioProjectDB = {
         { type: "text", data: "自分のこれまでの社会人経験で得た教訓を年単位でまとめたり、各プロジェクトで直面した課題などをそれぞれまとめることで、単なる技術紹介にとどまらず、私の思考プロセスや成長を伝えられる内容にしています。" },
         { type: "sectionTitle", data: "実装の各工程" },
         { type: "text", data: "１⃣要件整理" },
+        { type: "text", data: "必要機能、ページ構成などをドキュメント化して必要項目の洗い出しを行いました。" },
+        { type: "image", data: "/works/20000/images/002.png" },
         { type: "text", data: "２⃣画面遷移図の作成" },
         { type: "text", data: "Figmaを用いて画面遷移図の作成を行いました。" },
         { type: "image", data: "/works/20000/images/001.png" },
+        { type: "text", data: "3⃣コーディング" },
+        { type: "text", data: "画面遷移図を参考に各ページをコーディングしました。" },
+        { type: "sectionTitle", data: "作成困難だった点" },
+        { type: "text", data: "1⃣ヘッダーのナビゲーションバーの開発" },
+        { type: "text", data: "ヘッダーはユーザーの操作に応じてさまざまなスタイルが変化するように設計しました。そのため、単純に hover などでスタイルを変更するだけでは対応できず、スタイルの情報をオブジェクトで管理し、computed を活用してリアクティブに変化するように実装しました。" },
+        { type: "codes", data: [
+          "style: {",
+          "　text: computed(():string => {",
+          "　　if(navItemProperties.mode === 'whitemode'){",
+          "　　　if(navItemProperties.navItems.projects.property.isSelected){",
+          "　　　　return #000000;",
+          "　　　else if(!navItemProperties.navItems.projects.property.isSelected){",
+          "　　　　return navItemProperties.navItems.projects.property.isHovered ? #000000 : #CDCDCD;",
+          "　　　}",
+          "　　}else if(navItemProperties.mode === 'darkmode'){",
+          "　　　if(navItemProperties.navItems.projects.property.isSelected){",
+          "　　　　return #ffffff;",
+          "　　　}else if(!navItemProperties.navItems.projects.property.isSelected){",
+          "　　　　return navItemProperties.navItems.projects.property.isHovered ? #ffffff : #7B7B7B;",
+          "　　　}",
+          "　　}",
+          "　　return #000000;",
+          "　}),"
+        ]},
+        { type: "text", data: "2⃣アニメーションフレームワークGSAPの導入" },
+        { type: "text", data: "Nuxt.jsでは、エレメントの情報をrefを用いてリアクティブに管理するため、通常のGSAPで紹介されているトリガーの作り方とは異なるアプローチが必要となりました。" },
+        { type: "codes", data: [
+          "import gsap from 'gsap';",
+          "import { ScrollTrigger } from 'gsap/ScrollTrigger';",
+          "if (typeof window !== 'undefined') {",
+          "　gsap.registerPlugin(ScrollTrigger);",
+          "}",
+          "export default defineNuxtPlugin((nuxtApp) => {",
+          "　nuxtApp.provide('gsap', gsap);",
+          "　nuxtApp.provide('ScrollTrigger', ScrollTrigger);",
+          "});",
+        ]},
         { type: "sectionTitle", data: "各種リンク" },
         { type: "link", data: { text: "サイトリンク", url: 'https://main.d2ohg8yu2vb3z0.amplifyapp.com' }},
         { type: "link", data: { text: "GitHub リポジトリ", url: 'https://github.com/ishikawagoemon1205/portfolio2.0' }},
-        { type: "sectionTitle", data: "今後記載予定内容" },
-        { type: "text", data: "作成難易度が高かった個所" },
     ],
       links: [
         { title: "GitHub リポジトリ", url: "https://github.com/example/portfolio-website" },
