@@ -11,8 +11,6 @@ const RefBlogData = computed(() => {
     }
 });
 
-// aaaaaaaaa
-
 </script>
 
 <template>
