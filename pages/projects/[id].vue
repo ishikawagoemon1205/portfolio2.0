@@ -103,6 +103,5 @@ const RefProjectData = computed(() => {
                 </div>
             </div>
         </div>
-        
     </div>
 </template>
