@@ -106,9 +106,9 @@ export const DBWorkesDate: PortfolioProjectDB = {
         "　gsap.registerPlugin(ScrollTrigger);",
         "}",
         "export default defineNuxtPlugin((nuxtApp) => {",
-        "　nuxtApp.provide('gsap', gsap);",
-        "　nuxtApp.provide('ScrollTrigger', ScrollTrigger);",
-        "});",
+        " 　nuxtApp.provide('gsap', gsap);",
+        " 　nuxtApp.provide('ScrollTrigger', ScrollTrigger);",
+        "});"
       ]},
       { type: "sectionTitle", data: "各種リンク" },
       { type: "link", data: { text: "サイトリンク", url: 'https://main.d2ohg8yu2vb3z0.amplifyapp.com' }},
