@@ -143,9 +143,12 @@ const { $gsap , $ScrollTrigger } = useNuxtApp();
         mode: computed(() => {
             const arrayWhitePage:Array<string> = ['/home','/projects',"/works","/contact","/resume"];
             const arrayBlackPage:Array<string> = ['/profile','/blog'];
-            if(arrayWhitePage.includes(router.currentRoute.value.path  as string)){
+            const isPathMatch = (pathArray: Array<string>, currentPath: string): boolean => {
+                return pathArray.some(path => currentPath.startsWith(path));
+            }
+            if (isPathMatch(arrayWhitePage, router.currentRoute.value.path as string)) {
                 return "whitemode";
-            }else if(arrayBlackPage.includes(router.currentRoute.value.path as string)){
+            } else if (isPathMatch(arrayBlackPage, router.currentRoute.value.path as string)) {
                 return "darkmode";
             }
             return "whitemode";
