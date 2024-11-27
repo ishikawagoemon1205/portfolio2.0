@@ -108,7 +108,7 @@ export const DBWorkesDate: PortfolioProjectDB = {
           { type: "link", data: { text: "サイトリンク", url: 'https://main.d33tzcyknqz8k8.amplifyapp.com' }},
           { type: "link", data: { text: "GitHub リポジトリ", url: 'https://github.com/ishikawagoemon1205/portfolio2.0' }},
           { type: "sectionTitle", data: "今後記載予定内容" },
-          { type: "text", data: "作成難易度が高かった個所" },
+          { type: "text", data: "作成難易度が高かった個所aaaaabbbbb" },
         ],
         links: [
           { title: "GitHub リポジトリ", url: "https://github.com/example/portfolio-website" },
