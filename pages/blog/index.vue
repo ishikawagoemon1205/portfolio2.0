@@ -1,7 +1,22 @@
 <script setup lang="ts">
 import { DBBlogData } from '~/DB/blog';
 
-const RefBlogData = ref(Object.values(DBBlogData));
+onMounted(() => {
+    sortProjects("降順");
+});
+
+const blogData = ref(Object.values(DBBlogData));
+const sortProjects = (property) => {
+    let sortedData = [...blogData.value];  // 新しい配列を作成（元のデータを変更しないように）
+
+    if (property === "降順") {
+        sortedData.sort((a, b) => new Date(b.date.published) - new Date(a.date.published));  // 降順ソート
+    } else if (property === "昇順") {
+        sortedData.sort((a, b) => new Date(a.date.published) - new Date(b.date.published));  // 昇順ソート
+    }
+    // ソートされたデータをrefに再代入
+    blogData.value = sortedData;
+};
 
 </script>
 
@@ -14,7 +29,7 @@ const RefBlogData = ref(Object.values(DBBlogData));
             </div>
             <div class="w-[95%] h-[2px] bg-_gray_4"></div>
             <div class="w-[95%] h-auto py-[50px] px-[4px] space-y-[20px]">
-                <div v-for="blog in RefBlogData" :key="blog.id" class="w-[100%] h-[120px] px-[20px] py-[15px] rounded-[6px] bg-_gray_5 transform transition-transform duration-300 ease-in-out hover:scale-110">
+                <div v-for="blog in blogData" :key="blog.id" class="w-[100%] h-[120px] px-[20px] py-[15px] rounded-[6px] bg-_gray_5 transform transition-transform duration-300 ease-in-out hover:scale-110">
                     <NuxtLink :to="{name: 'blog-id' , params: {id: blog.id}}">
                         <div class="w-[100%] h-[100%] flex ">
                             <div class="w-[80%] h-[90px]">
