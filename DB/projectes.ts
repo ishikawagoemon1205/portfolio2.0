@@ -31,8 +31,7 @@ type Project = {
     }[];
 };
 
-type ProjectExample = Record<string, Project>;  
-
+type ProjectExample = Record<string, Project>; 
 
 export const DBProjectData: ProjectExample = {
     "portfolio-website": {
@@ -76,7 +75,7 @@ export const DBProjectData: ProjectExample = {
     },
     "ecommerce-platform": {
         id: 10001,
-        companyname: "株式会社サンプル",
+        companyname: "株式会社サンプルa",
         date: { start: "2020-01-01", end: "2020-12-31", duration: "12ヶ月" },
         impactLevel: "高程度",
         title: "サンプル",
@@ -235,6 +234,7 @@ export const DBProjectData: ProjectExample = {
             { type: "text", data: "ユーザーの利便性を最優先に、直感的でシンプルなインターフェースをデザインしました。特に、社内の多忙な社員が効率よく情報をやり取りできるように、使いやすさと視覚的なわかりやすさを意識して設計しました。" },
             { type: "text", data: "2⃣フロントエンド開発" },
             { type: "text", data: "初めてJavaScriptのフレームワークを使用して開発しました。" },
+            { type: "text", data: "Nuxt.JavaScriptではライフサイクルフックやミドルウェアの使い方を正しく理解するのが難しく、さらにTypeScriptで記述する必要があったため、非常に大変でした。" },
             { type: "text", data: "3⃣チーム開発の経験" },
             { type: "text", data: "初めてのチーム開発を経験し、Gitを使ったバージョン管理や、タスク管理ツールを活用して進捗を追いながら開発を行いました。チームメンバーと連携し、コードレビューやブランチ戦略を学びました。" },
             { type: "sectionTitle", data: "技術内容" },
